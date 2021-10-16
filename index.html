@@ -1,0 +1,537 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <style>
+        body {
+            overflow-y: scroll;
+            background-color: rgb(207, 207, 207);
+            user-select: none;
+        }
+
+        div {
+            display: none;
+            height: auto;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+        }
+
+        select {
+            width: 100px;
+            height: 25px;
+            border: 2px solid black;
+            overflow: scroll;
+        }
+
+        input {
+            width: 100px;
+            height: 25px;
+            overflow: scroll;
+        }
+
+        h1 {
+            font-family: 'Times New Roman', Times, serif;
+            color: deeppink;
+        }
+
+        .name {
+            display: flex;
+            justify-content: center;
+            font-size: 30px;
+            color: crimson;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="name">Unit Converter</div><br>
+    <div class="box"><select name="" id="selecter" onchange="hide()">
+            <option value="m">Select a quantity</option>
+            <option value="length">Length</option>
+            <option value="temperature">Temperature</option>
+
+            <option value="area">Area</option>
+            <option value="pressure">Pressure</option>
+
+        </select>
+
+
+
+
+
+
+        <div id="lengthdiv"><br>
+            <h1>from</h1>
+            <form name="ka"><select name="" id="lengthselect" onchange="lengthf()">
+                    <option value="km">km</option>
+                    <option value="m">m</option>
+                    <option value="cm">cm</option>
+                    <option value="inch">inch</option>
+                    <option value="foot">foot</option>
+                    <option value="yard">yard</option>
+                    <option value="mile">mile</option>
+                </select>
+                <input name="lengthinput" type="text" oninput="lengthf()"><br>
+                <h1>to</h1>
+                <select name="" id="lengthselect2" onchange="lengthf()">
+                    <option value="km">km</option>
+                    <option value="m">m</option>
+                    <option value="cm">cm</option>
+                    <option value="inch">inch</option>
+                    <option value="foot">foot</option>
+                    <option value="yard">yard</option>
+                    <option value="mile">mile</option>
+                </select>
+                <input name="lengthinput2" type="text" readonly>
+            </form>
+        </div>
+        <!--here length div is close-->
+        <div id="temperaturediv"><br>
+            <h1>from</h1>
+            <form name="temperatureform"><select name="" id="temperatureselect" onchange="temperaturef()">
+                    <option value="celsius">celsius</option>
+                    <option value="fahrenheit">fahrenheit</option>
+                    <option value="kelvin">kelvin</option>
+                </select><input name="temperatureinput" type="text" oninput="temperaturef()"><br>
+                <h1>to</h1>
+                <select name="" id="temperatureselect2" onchange="temperaturef()">
+                    <option value="celsius">Celsius</option>
+                    <option value="fahrenheit">fahrenheit</option>
+                    <option value="kelvin">kelvin</option>
+                </select><input name="temperatureinput2" type="text" readonly>
+            </form>
+        </div>
+        <div id="areadiv"><br>
+            <h1>from</h1>
+            <form name="areaform"><select name="" id="areaselect" onchange="areaf()">
+                    <option value="smeter">Square meter</option>
+                    <option value="sfoot">Square foot</option>
+                    <option value="hectare">Hectare</option>
+                    <option value="acre">Acre</option>
+                </select><input type="text" name="areainput" oninput="areaf ()"><br>
+                <h1>to</h1>
+                <select name="" id="areaselect2" onchange="areaf()">
+                    <option value="smeter">Square meter</option>
+                    <option value="sfoot">Square foot</option>
+                    <option value="hectare">Hectare</option>
+                    <option value="acre">Acre</option>
+                </select><input type="text" name="areainput2" readonly>
+            </form>
+        </div>
+        <!--area dive ends here-->
+        <div id="pressurediv"><br>
+            <h1>from</h1>
+            <form name="pressureform">
+                <select name="" id="pressureselect" onchange="pressuref()">
+                    <option value="bar">Bar</option>
+                    <option value="pascal">Pascal</option>
+                    <option value="po">Pound per square inch</option>
+                    <option value="stat">Standard atmosphere</option>
+                    <option value="torr">Torr</option>
+                </select><input type="text" name="pressureinput" oninput="pressuref ()"><br>
+                <h1>to</h1>
+                <select name="" id="pressureselect2" onchange="pressuref()">
+                    <option value="bar">Bar</option>
+                    <option value="pascal">Pascal</option>
+                    <option value="po">Pound per square inch</option>
+                    <option value="stat">Standard atmosphere</option>
+                    <option value="torr">Torr</option>
+                </select><input type="text" name="pressureinput2" readonly>
+            </form>
+        </div>
+    </div>
+    <script>
+        function lengthf() {
+            if (document.getElementById("selecter").value == "length") {
+
+                function num() {
+                    var val = document.getElementById("lengthselect").value;
+                    var vo = document.getElementById("lengthselect2").value;
+                    var a = Number(document.ka.lengthinput.value);
+                    var b = Number(document.ka.lengthinput2.value);
+
+                    if
+                        (val == "km" && vo == "m") {
+
+                        document.ka.lengthinput2.value = (a) * 1000;
+                    }
+                    else if (val == "km" && vo == "cm") {
+                        document.ka.lengthinput2.value = (a) * 100000;
+                    }
+                    else if (val == "km" && vo == "yard") {
+                        document.ka.lengthinput2.value = (a) * 1093.61;
+                    }
+                    else if (val == "km" && vo == "mile") {
+                        document.ka.lengthinput2.value = (a) * 0.621371;
+                    }
+                    else if (val == "km" && vo == "foot") {
+                        document.ka.lengthinput2.value = (a) * 3280.84;
+                    }
+                    else if (val == "km" && vo == "inch") {
+                        document.ka.lengthinput2.value = (a) * 39370.1;
+                    }
+                    else if (val == "km" && vo == "km") {
+                        document.ka.lengthinput2.value = (a);
+                    }
+                    else if (val == "m" && vo == "cm") {
+                        document.ka.lengthinput2.value = (a) * 100;
+                    }
+                    else if (val == "m" && vo == "yard") {
+                        document.ka.lengthinput2.value = (a) * 1.09361;
+                    }
+                    else if (val == "m" && vo == "mile") {
+                        document.ka.lengthinput2.value = (a) * 0.000621371;
+                    }
+                    else if (val == "m" && vo == "foot") {
+                        document.ka.lengthinput2.value = (a) * 3.28084;
+                    }
+                    else if (val == "m" && vo == "inch") {
+                        document.ka.lengthinput2.value = (a) * 39.3701;
+                    }
+                    else if (val == "m" && vo == "km") {
+                        document.ka.lengthinput2.value = (a) * 0.001;
+                    }
+                    else if (val == "m" && vo == "m") {
+                        document.ka.lengthinput2.value = (a);
+                    }
+                    else if (val == "cm" && vo == "m") {
+                        document.ka.lengthinput2.value = (a) * 0.01;
+                    }
+                    else if (val == "cm" && vo == "yard") {
+                        document.ka.lengthinput2.value = (a) * 0.0109361;
+                    }
+                    else if (val == "cm" && vo == "mile") {
+                        document.ka.lengthinput2.value = (a) / 160934;
+                    }
+                    else if (val == "cm" && vo == "foot") {
+                        document.ka.lengthinput2.value = (a) * 0.0328084;
+                    }
+                    else if (val == "cm" && vo == "inch") {
+                        document.ka.lengthinput2.value = (a) * 0.393701;
+                    }
+                    else if (val == "cm" && vo == "km") {
+                        document.ka.lengthinput2.value = (a) / 100000;
+                    }
+                    else if (val == "cm" && vo == "cm") {
+                        document.ka.lengthinput2.value = (a);
+                    }
+                    else if (val == "inch" && vo == "m") {
+                        document.ka.lengthinput2.value = (a) * 0.0254;
+                    }
+                    else if (val == "inch" && vo == "yard") {
+                        document.ka.lengthinput2.value = (a) / 36;
+                    }
+                    else if (val == "inch" && vo == "mile") {
+                        document.ka.lengthinput2.value = (a) / 63360;
+                    }
+                    else if (val == "inch" && vo == "foot") {
+                        document.ka.lengthinput2.value = (a) / 12;
+                    }
+                    else if (val == "inch" && vo == "cm") {
+                        document.ka.lengthinput2.value = (a) * 2.54;
+                    }
+                    else if (val == "inch" && vo == "km") {
+                        document.ka.lengthinput2.value = (a) / 39370;
+                    }
+                    else if (val == "inch" && vo == "inch") {
+                        document.ka.lengthinput2.value = (a);
+                    }
+                    else if (val == "foot" && vo == "m") {
+                        document.ka.lengthinput2.value = (a) * 0.3048;
+                    }
+                    else if (val == "foot" && vo == "yard") {
+                        document.ka.lengthinput2.value = (a) / 3;
+                    }
+                    else if (val == "foot" && vo == "mile") {
+                        document.ka.lengthinput2.value = (a) / 5280;
+                    }
+                    else if (val == "foot" && vo == "inch") {
+                        document.ka.lengthinput2.value = (a) * 12;
+                    }
+                    else if (val == "foot" && vo == "cm") {
+                        document.ka.lengthinput2.value = (a) * 30.48;
+                    }
+                    else if (val == "foot" && vo == "km") {
+                        document.ka.lengthinput2.value = (a) * 0.0003048;
+                    }
+                    else if (val == "foot" && vo == "foot") {
+                        document.ka.lengthinput2.value = (a);
+                    }
+                    else if (val == "yard" && vo == "m") {
+                        document.ka.lengthinput2.value = (a) * 0.9144;
+                    }
+                    else if (val == "yard" && vo == "foot") {
+                        document.ka.lengthinput2.value = (a) * 3;
+                    }
+                    else if (val == "yard" && vo == "mile") {
+                        document.ka.lengthinput2.value = (a) / 1760;
+                    }
+                    else if (val == "yard" && vo == "inch") {
+                        document.ka.lengthinput2.value = (a) * 36;
+                    }
+                    else if (val == "yard" && vo == "cm") {
+                        document.ka.lengthinput2.value = (a) * 91.44;
+                    }
+                    else if (val == "yard" && vo == "km") {
+                        document.ka.lengthinput2.value = (a) * 0.0009144;
+                    }
+                    else if (val == "yard" && vo == "yard") {
+                        document.ka.lengthinput2.value = (a);
+                    }
+                    else if (val == "mile" && vo == "m") {
+                        document.ka.lengthinput2.value = (a) * 1609.34;
+                    }
+                    else if (val == "mile" && vo == "foot") {
+                        document.ka.lengthinput2.value = (a) * 5280;
+                    }
+                    else if (val == "mile" && vo == "yard") {
+                        document.ka.lengthinput2.value = (a) * 1760;
+                    }
+                    else if (val == "mile" && vo == "inch") {
+                        document.ka.lengthinput2.value = (a) * 63360;
+                    }
+                    else if (val == "mile" && vo == "cm") {
+                        document.ka.lengthinput2.value = (a) * 160934;
+                    }
+                    else if (val == "mile" && vo == "km") {
+                        document.ka.lengthinput2.value = (a) * 1.60934;
+                    }
+                    else if (val == "mile" && vo == "mile") {
+                        document.ka.lengthinput2.value = (a);
+                    }
+                    else { console.log("errer") }
+                }; num();
+            } else { console.log("go"); };
+        };
+        /*document.getElementById("hide").style.display="none";*/
+        function hide() {
+            if (document.getElementById("selecter").value == "length") {
+                document.getElementById("lengthdiv").style.display = "block";
+                document.getElementById("temperaturediv").style.display = "none";
+                document.getElementById("areadiv").style.display = "none";
+                document.getElementById("pressurediv").style.display = "none";
+            }
+            else if (document.getElementById("selecter").value == "temperature") {
+                document.getElementById("temperaturediv").style.display = "block";
+                document.getElementById("lengthdiv").style.display = "none";
+                document.getElementById("areadiv").style.display = "none";
+                document.getElementById("pressurediv").style.display = "none";
+            }
+            else if (document.getElementById("selecter").value == "area") {
+                document.getElementById("areadiv").style.display = "block";
+                document.getElementById("lengthdiv").style.display = "none";
+                document.getElementById("temperaturediv").style.display = "none";
+                document.getElementById("pressurediv").style.display = "none";
+            }
+            else if (document.getElementById("selecter").value == "pressure") {
+                document.getElementById("pressurediv").style.display = "block";
+                document.getElementById("lengthdiv").style.display = "none";
+                document.getElementById("temperaturediv").style.display = "none";
+                document.getElementById("areadiv").style.display = "none";
+            }
+            else {
+                console.log("do nothing");
+            }
+        };
+        //temperature starts from here
+        function temperaturef() {
+            if (document.getElementById("selecter").value == "temperature") {
+                function temmperaturef2() {
+                    var temperatureselect = document.getElementById("temperatureselect").value;
+                    var temperatureselect2 = document.getElementById("temperatureselect2").value;
+                    var tem = Number(document.temperatureform.temperatureinput.value);
+
+                    if (temperatureselect == "celsius" && temperatureselect2 == "fahrenheit") {
+                        document.temperatureform.temperatureinput2.value = ((tem) * 9 / 5) + 32;
+                    }
+                    else if (temperatureselect == "celsius" && temperatureselect2 == "kelvin") {
+                        document.temperatureform.temperatureinput2.value = (tem) + 273.15;
+                    }
+                    else if (temperatureselect == "celsius" && temperatureselect2 == "celsius") {
+                        document.temperatureform.temperatureinput2.value = (tem)
+                    }
+                    else if (temperatureselect == "fahrenheit" && temperatureselect2 == "kelvin") {
+                        document.temperatureform.temperatureinput2.value = ((tem) - 32) * 5 / 9 + 273.15
+                    }
+                    else if (temperatureselect == "fahrenheit" && temperatureselect2 == "celsius") {
+                        document.temperatureform.temperatureinput2.value = ((tem) - 32) * 5 / 9
+                    }
+                    else if (temperatureselect == "fahrenheit" && temperatureselect2 == "fahrenheit") {
+                        document.temperatureform.temperatureinput2.value = (tem)
+                    }
+                    else if (temperatureselect == "kelvin" && temperatureselect2 == "fahrenheit") {
+                        document.temperatureform.temperatureinput2.value = ((tem) - 273.15) * 9 / 5 + 32;
+                    }
+                    else if (temperatureselect == "kelvin" && temperatureselect2 == "celsius") {
+                        document.temperatureform.temperatureinput2.value = (tem) - 273.15;
+                    }
+                    else if (temperatureselect == "kelvin" && temperatureselect2 == "kelvin") {
+                        document.temperatureform.temperatureinput2.value = (tem);
+                    }
+                    else { console.log("else") }
+                } temmperaturef2();
+            };
+        };
+        //temperature ends here
+        function areaf() {
+            if (document.getElementById("selecter").value == "area") {
+                function areaf2() {
+                    var areaselect = document.getElementById("areaselect").value;
+                    var areaselect2 = document.getElementById("areaselect2").value;
+                    var are = Number(document.areaform.areainput.value);
+
+                    if (areaselect == "smeter" && areaselect2 == "sfoot") {
+                        document.areaform.areainput2.value = (are) * 10.7639;
+                    }
+                    else if (areaselect == "smeter" && areaselect2 == "hectare") {
+                        document.areaform.areainput2.value = (are) / 10000;
+                    }
+                    else if (areaselect == "smeter" && areaselect2 == "acre") {
+                        document.areaform.areainput2.value = (are) * 0.000247105;
+                    }
+                    else if (areaselect == "smeter" && areaselect2 == "smeter") {
+                        document.areaform.areainput2.value = (are);
+                    }
+                    else if (areaselect == "sfoot" && areaselect2 == "smeter") {
+                        document.areaform.areainput2.value = (are) * 0.092903;
+                    }
+                    else if (areaselect == "sfoot" && areaselect2 == "acre") {
+                        document.areaform.areainput2.value = (are) / 43560;
+                    }
+                    else if (areaselect == "sfoot" && areaselect2 == "hectare") {
+                        document.areaform.areainput2.value = (are) / 107639;
+                    }
+                    else if (areaselect == "sfoot" && areaselect2 == "sfoot") {
+                        document.areaform.areainput2.value = (are);
+                    }
+                    else if (areaselect == "hectare" && areaselect2 == "smeter") {
+                        document.areaform.areainput2.value = (are) * 10000
+                    }
+                    else if (areaselect == "hectare" && areaselect2 == "acre") {
+                        document.areaform.areainput2.value = (are) * 2.47105;
+                    }
+                    else if (areaselect == "hectare" && areaselect2 == "sfoot") {
+                        document.areaform.areainput2.value = (are) * 107639;
+                    }
+                    else if (areaselect == "hectare" && areaselect2 == "hectare") {
+                        document.areaform.areainput2.value = (are);
+                    }
+                    else if (areaselect == "acre" && areaselect2 == "smeter") {
+                        document.areaform.areainput2.value = (are) * 4046.86;
+                    }
+                    else if (areaselect == "acre" && areaselect2 == "hectare") {
+                        document.areaform.areainput2.value = (are) * 0.404686;
+                    }
+                    else if (areaselect == "acre" && areaselect2 == "sfoot") {
+                        document.areaform.areainput2.value = (are) * 43560;
+                    }
+                    else if (areaselect == "acre" && areaselect2 == "acre") {
+                        document.areaform.areainput2.value = (are);
+                    }
+                    else { console.log("else funtion") };
+
+
+
+
+
+                }; areaf2();
+            };
+        };
+        //area ends here
+        function pressuref() {
+            if (document.getElementById("selecter").value == "pressure") {
+                function pressuref2() {
+                    var pressureselect = document.getElementById("pressureselect").value;
+                    var pressureselect2 = document.getElementById("pressureselect2").value;
+                    var pre = Number(document.pressureform.pressureinput.value);
+
+                    if (pressureselect == "bar" && pressureselect2 == "pascal") {
+                        document.pressureform.pressureinput2.value = (pre) * 100000;
+                    }
+                    else if (pressureselect == "bar" && pressureselect2 == "stat") {
+                        document.pressureform.pressureinput2.value = (pre) * 0.986923;
+                    }
+                    else if (pressureselect == "bar" && pressureselect2 == "po") {
+                        document.pressureform.pressureinput2.value = (pre) * 14.5038;
+                    }
+                    else if (pressureselect == "bar" && pressureselect2 == "torr") {
+                        document.pressureform.pressureinput2.value = (pre) * 750.062;
+                    }
+                    else if (pressureselect == "bar" && pressureselect2 == "bar") {
+                        document.pressureform.pressureinput2.value = (pre);
+                    }
+                    if (pressureselect == "pascal" && pressureselect2 == "bar") {
+                        document.pressureform.pressureinput2.value = (pre) * 100000;
+                    }
+                    else if (pressureselect == "pascal" && pressureselect2 == "stat") {
+                        document.pressureform.pressureinput2.value = (pre) / 101325;
+                    }
+                    else if (pressureselect == "pascal" && pressureselect2 == "po") {
+                        document.pressureform.pressureinput2.value = (pre) * 0.000145038;
+                    }
+                    else if (pressureselect == "pascal" && pressureselect2 == "torr") {
+                        document.pressureform.pressureinput2.value = (pre) * 0.00750062;
+                    }
+                    else if (pressureselect == "pascal" && pressureselect2 == "pascal") {
+                        document.pressureform.pressureinput2.value = (pre);
+                    }
+                    else if (pressureselect == "torr" && pressureselect2 == "bar") {
+                        document.pressureform.pressureinput2.value = (pre) * 0.00133322;
+                    }
+                    else if (pressureselect == "torr" && pressureselect2 == "pascal") {
+                        document.pressureform.pressureinput2.value = (pre) * 133.322;
+                    }
+                    else if (pressureselect == "torr" && pressureselect2 == "po") {
+                        document.pressureform.pressureinput2.value = (pre) / 0.0193368;
+                    }
+                    else if (pressureselect == "torr" && pressureselect2 == "stat") {
+                        document.pressureform.pressureinput2.value = (pre) / 760;
+                    }
+                    else if (pressureselect == "torr" && pressureselect2 == "torr") {
+                        document.pressureform.pressureinput2.value = (pre);
+                    }
+                    else if (pressureselect == "po" && pressureselect2 == "pascal") {
+                        document.pressureform.pressureinput2.value = (pre) * 6894.76;
+                    }
+                    else if (pressureselect == "po" && pressureselect2 == "stat") {
+                        document.pressureform.pressureinput2.value = (pre) / 14.696;
+                    }
+                    else if (pressureselect == "po" && pressureselect2 == "bar") {
+                        document.pressureform.pressureinput2.value = (pre) * 0.0689476;
+                    }
+                    else if (pressureselect == "po" && pressureselect2 == "torr") {
+                        document.pressureform.pressureinput2.value = (pre) * 51.7149;
+                    }
+                    else if (pressureselect == "po" && pressureselect2 == "po") {
+                        document.pressureform.pressureinput2.value = (pre);
+                    }
+                    else if (pressureselect == "stat" && pressureselect2 == "pascal") {
+                        document.pressureform.pressureinput2.value = (pre) * 101325;
+                    }
+                    else if (pressureselect == "stat" && pressureselect2 == "bar") {
+                        document.pressureform.pressureinput2.value = (pre) * 1.01325;
+                    }
+                    else if (pressureselect == "stat" && pressureselect2 == "po") {
+                        document.pressureform.pressureinput2.value = (pre) * 14.6959;
+                    }
+                    else if (pressureselect == "stat" && pressureselect2 == "torr") {
+                        document.pressureform.pressureinput2.value = (pre) * 760;
+                    }
+                    else if (pressureselect == "stat" && pressureselect2 == "stat") {
+                        document.pressureform.pressureinput2.value = (pre);
+                    } else { console.log("pressure error") }
+
+                }; pressuref2()
+            }
+        }
+    </script>
+</body>
+
+</html>
